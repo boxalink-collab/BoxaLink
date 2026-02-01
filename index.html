@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>BoxaLink</title>
+    <title>BoxaLink | Education & Social</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,19 +12,34 @@
     <div id="auth-overlay" class="auth-layer hidden">
         <div class="auth-card">
             <h1 class="logo">Boxa<span>Link</span></h1>
-            <div id="auth-fields">
+            <div id="signup-area">
                 <input type="text" id="reg-name" placeholder="Nom complet">
-                <input type="tel" id="reg-phone" placeholder="Numéro de téléphone (ex: +228...)">
+                <input type="email" id="reg-email" placeholder="Email">
+                <select id="reg-role">
+                    <option value="Étudiant">Étudiant</option>
+                    <option value="Enseignant">Enseignant</option>
+                    <option value="Professionnel">Professionnel</option>
+                </select>
                 <input type="password" id="reg-pass" placeholder="Mot de passe">
-                <button class="btn-primary" id="btn-action">S'inscrire</button>
-                <p class="toggle-link" id="auth-toggle">Déjà inscrit ? Se connecter</p>
+                <input type="password" id="reg-pass-conf" placeholder="Confirmer le mot de passe">
+                <button class="btn-primary" id="btn-signup">S'inscrire</button>
+                <p class="toggle-link" id="to-login">Déjà inscrit ? Se connecter</p>
+            </div>
+            <div id="login-area" class="hidden">
+                <input type="email" id="log-email" placeholder="Email">
+                <input type="password" id="log-pass" placeholder="Mot de passe">
+                <button class="btn-primary" id="btn-login">Se connecter</button>
+                <p class="toggle-link" id="to-signup">Nouveau ? Créer un compte</p>
             </div>
         </div>
     </div>
 
     <header class="main-header">
         <div class="logo">Boxa<span>Link</span></div>
-        <button id="btn-logout"><i class="fas fa-sign-out-alt"></i></button>
+        <div class="header-right">
+            <button id="btn-search"><i class="fas fa-search"></i></button>
+            <button id="btn-logout"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
     </header>
 
     <div id="app-scroller">
@@ -33,7 +48,7 @@
 
     <nav class="tab-bar">
         <button class="tab-btn active" data-target="chats"><i class="fas fa-comment"></i><span>Chats</span></button>
-        <button class="tab-btn" data-target="agora"><i class="fas fa-bullhorn"></i><span>Agora</span></button>
+        <button class="tab-btn" data-target="agora"><i class="fas fa-users"></i><span>Agora</span></button>
         <button class="tab-btn" data-target="forums"><i class="fas fa-university"></i><span>Forums</span></button>
         <button class="tab-btn" data-target="library"><i class="fas fa-book"></i><span>Biblio</span></button>
         <button class="tab-btn" data-target="market"><i class="fas fa-store"></i><span>Market</span></button>
