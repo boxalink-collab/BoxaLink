@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>BoxaLink | Connect. Share. Grow.</title>
+    <title>BoxaLink</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,32 +12,24 @@
     <div id="auth-overlay" class="auth-layer hidden">
         <div class="auth-card">
             <h1 class="logo">Boxa<span>Link</span></h1>
-            <p class="slogan">Connect. Share. Grow.</p>
-            <div id="signup-area">
+            <div id="auth-fields">
                 <input type="text" id="reg-name" placeholder="Nom complet">
-                <input type="email" id="reg-email" placeholder="Email">
+                <input type="tel" id="reg-phone" placeholder="Numéro de téléphone (ex: +228...)">
                 <input type="password" id="reg-pass" placeholder="Mot de passe">
-                <button class="btn-primary" id="btn-signup">S'inscrire</button>
-                <p class="toggle-link" id="to-login">Déjà inscrit ? Se connecter</p>
-            </div>
-            <div id="login-area" class="hidden">
-                <input type="email" id="log-email" placeholder="Email">
-                <input type="password" id="log-pass" placeholder="Mot de passe">
-                <button class="btn-primary" id="btn-login">Se connecter</button>
-                <p class="toggle-link" id="to-signup">Nouveau ? Créer un compte</p>
+                <button class="btn-primary" id="btn-action">S'inscrire</button>
+                <p class="toggle-link" id="auth-toggle">Déjà inscrit ? Se connecter</p>
             </div>
         </div>
     </div>
 
     <header class="main-header">
         <div class="logo">Boxa<span>Link</span></div>
-        <div class="header-actions">
-            <button id="btn-logout"><i class="fas fa-sign-out-alt"></i></button>
-        </div>
+        <button id="btn-logout"><i class="fas fa-sign-out-alt"></i></button>
     </header>
 
-    <main id="app-view">
-        </main>
+    <div id="app-scroller">
+        <main id="app-view"></main>
+    </div>
 
     <nav class="tab-bar">
         <button class="tab-btn active" data-target="chats"><i class="fas fa-comment"></i><span>Chats</span></button>
