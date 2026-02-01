@@ -4,255 +4,199 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BoxaLink | Connect. Share. Grow.</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔗</text></svg>">
 </head>
 <body>
-    <!-- Écran de chargement initial -->
+    <!-- Écran de chargement -->
     <div id="loading-screen">
         <div class="loader-container">
-            <div class="loader-logo">
-                <div class="logo-gradient">B</div>
-                <h1>BoxaLink</h1>
-            </div>
+            <div class="logo-gradient">B</div>
+            <h1>BoxaLink</h1>
             <div class="slogan">Connect. Share. Grow.</div>
             <div class="loader"></div>
         </div>
     </div>
 
-    <!-- Écran de connexion (initial) -->
-    <div id="login-screen" class="screen">
-        <div class="login-container">
+    <!-- Écran d'authentification -->
+    <div id="auth-screen" class="screen">
+        <div class="auth-container">
             <div class="logo-header">
                 <div class="logo-gradient">B</div>
                 <h1>BoxaLink</h1>
             </div>
             <div class="slogan">Connect. Share. Grow.</div>
             
-            <div class="login-form">
-                <h2>Connexion</h2>
-                
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Connexion</button>
+                <button class="auth-tab" data-tab="register">Inscription</button>
+            </div>
+            
+            <!-- Formulaire Connexion -->
+            <div id="login-form" class="auth-form active">
                 <div class="input-group">
-                    <label for="email"><i class="fas fa-envelope"></i> Email ou Téléphone</label>
-                    <input type="text" id="email" placeholder="ex: user@boxalink.com">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="login-email" placeholder="Email ou Téléphone" required>
                 </div>
-                
                 <div class="input-group">
-                    <label for="password"><i class="fas fa-lock"></i> Mot de passe</label>
-                    <input type="password" id="password" placeholder="Votre mot de passe">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="login-password" placeholder="Mot de passe" required>
                 </div>
-                
                 <div class="remember-me">
-                    <input type="checkbox" id="remember" checked>
-                    <label for="remember">Maintenir la connexion</label>
+                    <input type="checkbox" id="remember-login" checked>
+                    <label for="remember-login">Rester connecté</label>
                 </div>
-                
                 <button id="login-btn" class="btn-gradient">
                     <i class="fas fa-sign-in-alt"></i> Se connecter
                 </button>
-                
-                <div class="separator">
-                    <span>ou</span>
-                </div>
-                
-                <button id="register-btn" class="btn-outline">
-                    <i class="fas fa-user-plus"></i> Créer un compte
-                </button>
-                
                 <div class="demo-notice">
-                    <i class="fas fa-info-circle"></i> Mode démo : Utilisez "demo@boxalink.com" / "password"
+                    <i class="fas fa-info-circle"></i> Mode démo : cliquez "Se connecter"
                 </div>
+            </div>
+            
+            <!-- Formulaire Inscription -->
+            <div id="register-form" class="auth-form">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="register-name" placeholder="Nom complet" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="register-email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="register-phone" placeholder="Téléphone" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="register-password" placeholder="Mot de passe" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="register-confirm" placeholder="Confirmer mot de passe" required>
+                </div>
+                <button id="register-btn" class="btn-gradient">
+                    <i class="fas fa-user-plus"></i> Créer mon compte
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Interface principale (cachée initialement) -->
+    <!-- Interface principale -->
     <div id="main-app" class="screen hidden">
-        <!-- En-tête de l'application -->
+        <!-- Header -->
         <header class="app-header">
-            <div class="header-content">
+            <div class="header-left">
                 <div class="logo-small">
                     <div class="logo-gradient">B</div>
                     <span>BoxaLink</span>
                 </div>
-                <div class="header-actions">
-                    <button class="icon-btn notification-btn">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
-                    </button>
-                    <button class="icon-btn search-btn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
             </div>
-            
-            <div class="user-info-bar">
-                <div class="user-avatar">
-                    <img src="https://i.pravatar.cc/40?img=8" alt="Avatar">
-                    <span class="online-status"></span>
-                </div>
-                <div class="user-details">
-                    <h3>Alexandre Martin</h3>
-                    <div class="user-badges">
-                        <span class="badge expert">Expert</span>
-                        <span class="badge verified">Professeur Certifié</span>
-                    </div>
-                </div>
+            <div class="header-center">
+                <span class="header-title" id="header-title">Chats</span>
+            </div>
+            <div class="header-right">
+                <button class="icon-btn" id="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn" id="notif-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge" id="notif-count">3</span>
+                </button>
             </div>
         </header>
 
-        <!-- Contenu principal des sections -->
+        <!-- Search Bar -->
+        <div class="search-bar hidden" id="search-bar">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Rechercher sur BoxaLink..." id="search-input">
+                <button class="icon-btn" id="close-search">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Contenu principal -->
         <main class="main-content">
-            <!-- Section Chats (active par défaut) -->
+            <!-- Section Chats -->
             <section id="chats-section" class="tab-content active">
                 <div class="section-header">
-                    <h2><i class="fas fa-comments"></i> Chats</h2>
-                    <button class="new-chat-btn">
-                        <i class="fas fa-edit"></i> Nouveau
+                    <h2>Discussions</h2>
+                    <button class="new-btn" id="new-chat-btn">
+                        <i class="fas fa-edit"></i>
                     </button>
                 </div>
-                
-                <div class="chats-list">
-                    <!-- Les chats seront générés dynamiquement -->
+                <div class="chats-list" id="chats-list">
+                    <!-- Chats chargés dynamiquement -->
                 </div>
             </section>
 
             <!-- Section Agora -->
             <section id="agora-section" class="tab-content">
                 <div class="section-header">
-                    <h2><i class="fas fa-broadcast-tower"></i> Agora</h2>
-                    <button class="new-post-btn">
-                        <i class="fas fa-plus"></i> Publier
+                    <h2>Agora</h2>
+                    <button class="new-btn" id="new-post-btn">
+                        <i class="fas fa-plus"></i>
                     </button>
                 </div>
-                
-                <div class="agora-filters">
-                    <button class="filter-btn active">Tous</button>
-                    <button class="filter-btn">Prioritaires</button>
-                    <button class="filter-btn">Sponsorisés</button>
-                </div>
-                
-                <div class="posts-list">
-                    <!-- Les publications seront générées dynamiquement -->
+                <div class="posts-list" id="posts-list">
+                    <!-- Posts chargés dynamiquement -->
                 </div>
             </section>
 
             <!-- Section Forums -->
             <section id="forums-section" class="tab-content">
                 <div class="section-header">
-                    <h2><i class="fas fa-users"></i> Forums</h2>
+                    <h2>Forums</h2>
                 </div>
-                
-                <div class="forums-list">
-                    <!-- Les forums seront générés dynamiquement -->
+                <div class="forums-list" id="forums-list">
+                    <!-- Forums chargés dynamiquement -->
                 </div>
             </section>
 
             <!-- Section Bibliothèque -->
             <section id="library-section" class="tab-content">
                 <div class="section-header">
-                    <h2><i class="fas fa-book-open"></i> Bibliothèque</h2>
+                    <h2>Bibliothèque</h2>
                 </div>
-                
-                <div class="library-filters">
-                    <button class="filter-btn active">Tous</button>
-                    <button class="filter-btn">Académique</button>
-                    <button class="filter-btn">Professionnel</button>
-                    <button class="filter-btn">Recherche</button>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">Tous</button>
+                    <button class="filter-btn" data-filter="academic">Académique</button>
+                    <button class="filter-btn" data-filter="professional">Professionnel</button>
+                    <button class="filter-btn" data-filter="research">Recherche</button>
                 </div>
-                
-                <div class="documents-list">
-                    <!-- Les documents seront générés dynamiquement -->
+                <div class="documents-list" id="documents-list">
+                    <!-- Documents chargés dynamiquement -->
                 </div>
             </section>
 
             <!-- Section Market -->
             <section id="market-section" class="tab-content">
                 <div class="section-header">
-                    <h2><i class="fas fa-store"></i> Market</h2>
+                    <h2>Market</h2>
                 </div>
-                
-                <div class="market-filters">
-                    <button class="filter-btn active">Tous</button>
-                    <button class="filter-btn">Proche</button>
-                    <button class="filter-btn">Promotions</button>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">Tous</button>
+                    <button class="filter-btn" data-filter="nearby">Proche</button>
+                    <button class="filter-btn" data-filter="discount">Promotions</button>
                 </div>
-                
-                <div class="products-list">
-                    <!-- Les produits seront générés dynamiquement -->
+                <div class="products-grid" id="products-grid">
+                    <!-- Produits chargés dynamiquement -->
                 </div>
             </section>
 
             <!-- Section Profil -->
             <section id="profile-section" class="tab-content">
-                <div class="profile-header">
-                    <div class="profile-avatar">
-                        <img src="https://i.pravatar.cc/100?img=8" alt="Avatar">
-                        <button class="edit-avatar"><i class="fas fa-camera"></i></button>
-                    </div>
-                    <div class="profile-info">
-                        <h2>Alexandre Martin</h2>
-                        <p class="profile-title">Professeur de Mathématiques</p>
-                        <p class="profile-location"><i class="fas fa-map-marker-alt"></i> Paris, France</p>
-                    </div>
-                </div>
-                
-                <div class="profile-badges">
-                    <h3><i class="fas fa-award"></i> Badges</h3>
-                    <div class="badges-list">
-                        <div class="profile-badge expert">
-                            <i class="fas fa-star"></i>
-                            <span>Expert</span>
-                        </div>
-                        <div class="profile-badge verified">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Professeur Certifié</span>
-                        </div>
-                        <div class="profile-badge contributor">
-                            <i class="fas fa-hands-helping"></i>
-                            <span>Contributeur Actif</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="profile-stats">
-                    <h3><i class="fas fa-chart-line"></i> Statistiques</h3>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <span class="stat-value">156</span>
-                            <span class="stat-label">Publications</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value">42</span>
-                            <span class="stat-label">Groupes</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value">1.2k</span>
-                            <span class="stat-label">Contacts</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value">18</span>
-                            <span class="stat-label">Ventes</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="profile-actions">
-                    <button class="profile-action-btn">
-                        <i class="fas fa-cog"></i> Paramètres
-                    </button>
-                    <button class="profile-action-btn">
-                        <i class="fas fa-moon"></i> Mode Sombre
-                    </button>
-                    <button class="profile-action-btn" id="logout-btn">
-                        <i class="fas fa-sign-out-alt"></i> Déconnexion
-                    </button>
+                <div class="profile-container" id="profile-container">
+                    <!-- Profil chargé dynamiquement -->
                 </div>
             </section>
         </main>
 
-        <!-- Barre de navigation en bas -->
+        <!-- Navigation basse -->
         <nav class="bottom-nav">
             <button class="nav-btn active" data-section="chats-section">
                 <i class="fas fa-comments"></i>
@@ -268,7 +212,7 @@
             </button>
             <button class="nav-btn" data-section="library-section">
                 <i class="fas fa-book-open"></i>
-                <span>Bibliothèque</span>
+                <span>Biblio</span>
             </button>
             <button class="nav-btn" data-section="market-section">
                 <i class="fas fa-store"></i>
@@ -279,25 +223,36 @@
                 <span>Profil</span>
             </button>
         </nav>
+    </div>
 
-        <!-- Overlay pour les notifications -->
-        <div class="notifications-overlay hidden">
-            <div class="notifications-container">
-                <div class="notifications-header">
-                    <h3>Notifications</h3>
-                    <button class="close-notifications"><i class="fas fa-times"></i></button>
-                </div>
-                <div class="notifications-list">
-                    <!-- Les notifications seront générées dynamiquement -->
-                </div>
+    <!-- Overlay Notifications -->
+    <div class="overlay hidden" id="notifications-overlay">
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h3>Notifications</h3>
+                <button class="icon-btn" id="close-notifications">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="notifications-list" id="notifications-list">
+                <!-- Notifications chargées dynamiquement -->
             </div>
         </div>
     </div>
 
-    <!-- Script Firebase (simulé pour cette démo) -->
+    <!-- Scripts -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="./script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    
+    <script type="module" src="modules/app.js"></script>
+    <script type="module" src="modules/auth.js"></script>
+    <script type="module" src="modules/chats.js"></script>
+    <script type="module" src="modules/agora.js"></script>
+    <script type="module" src="modules/forums.js"></script>
+    <script type="module" src="modules/library.js"></script>
+    <script type="module" src="modules/market.js"></script>
+    <script type="module" src="modules/profile.js"></script>
 </body>
 </html>
