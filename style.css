@@ -80,3 +80,14 @@ body { background: var(--bg-gray); color: var(--text-dark); overflow: hidden; he
 .message-input-area { background: #f0f0f0; padding: 10px; display: flex; align-items: center; gap: 10px; }
 #msg-input { flex: 1; border: none; padding: 12px 15px; border-radius: 25px; outline: none; }
 #send-msg-btn { background: #075e54; color: white; border: none; width: 45px; height: 45px; border-radius: 50%; }
+
+select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: white;
+    font-size: 1rem;
+    margin: 8px 0;
+    appearance: none; /* Enlève le style par défaut du navigateur */
+}
