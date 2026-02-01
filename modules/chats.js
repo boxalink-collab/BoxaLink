@@ -13,9 +13,7 @@ export function initChats(db, auth, userData) {
                 <div id="conversations-container">
                     <div class="loading-status">Chargement de vos messages...</div>
                 </div>
-                <button class="fab" id="start-new-chat">
-                    <i class="fas fa-plus"></i>
-                </button>
+                <button class="fab" id="start-new-chat"><i class="fas fa-plus"></i></button>
             </div>
 
             <div id="chat-detail-screen" class="hidden">
