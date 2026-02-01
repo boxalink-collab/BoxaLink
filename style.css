@@ -1,36 +1,56 @@
 :root {
     --primary: linear-gradient(135deg, #f27121 0%, #8a2387 50%, #1271ff 100%);
-    --bg: #f0f2f5;
+    --bg-gray: #f0f2f5;
     --white: #ffffff;
+    --text-dark: #1c1e21;
+    --text-gray: #65676b;
+    --accent-blue: #1271ff;
     --header-h: 60px;
     --nav-h: 70px;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
-body { background: var(--bg); overflow: hidden; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
 
-.main-header { position: fixed; top: 0; width: 100%; height: var(--header-h); background: var(--white); display: flex; align-items: center; justify-content: space-between; padding: 0 15px; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.logo { font-size: 1.4rem; font-weight: 800; }
+body { background: var(--bg-gray); color: var(--text-dark); overflow: hidden; height: 100vh; }
+
+/* Header */
+.main-header {
+    position: fixed; top: 0; width: 100%; height: var(--header-h);
+    background: var(--white); display: flex; align-items: center;
+    justify-content: space-between; padding: 0 15px; z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+.logo { font-size: 1.5rem; font-weight: 800; }
 .logo span { background: var(--primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.header-right button { background: #f0f2f5; border: none; width: 35px; height: 35px; border-radius: 50%; margin-left: 8px; cursor: pointer; }
 
-#app-scroller { position: absolute; inset: 0; padding-top: var(--header-h); padding-bottom: var(--nav-h); overflow-y: auto; }
+/* Scroller principal */
+#app-scroller {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    padding-top: var(--header-h); padding-bottom: var(--nav-h);
+    overflow-y: auto; -webkit-overflow-scrolling: touch;
+}
 
-.tab-bar { position: fixed; bottom: 0; width: 100%; height: var(--nav-h); background: var(--white); display: flex; border-top: 1px solid #ddd; z-index: 1000; }
-.tab-btn { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; background: none; border: none; color: #65676b; font-size: 0.65rem; transition: 0.2s; }
-.tab-btn.active { color: #1271ff; }
-.tab-btn i { font-size: 1.3rem; margin-bottom: 3px; }
+/* Barre de navigation */
+.tab-bar {
+    position: fixed; bottom: 0; width: 100%; height: var(--nav-h);
+    background: var(--white); display: flex; border-top: 1px solid #ddd; z-index: 1000;
+}
+.tab-btn {
+    flex: 1; border: none; background: none; display: flex;
+    flex-direction: column; align-items: center; justify-content: center;
+    color: var(--text-gray); font-size: 0.7rem; cursor: pointer;
+}
+.tab-btn.active { color: var(--accent-blue); font-weight: 600; }
+.tab-btn i { font-size: 1.4rem; margin-bottom: 2px; }
 
-/* Cards & Posts */
-.card { background: var(--white); margin: 10px; padding: 15px; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-.post-input { width: 100%; padding: 12px; border-radius: 20px; border: 1px solid #ddd; background: #f0f2f5; margin-bottom: 10px; cursor: pointer; }
-.badge { background: #e4e6eb; padding: 3px 8px; border-radius: 5px; font-size: 0.75rem; font-weight: bold; }
+/* Auth Layer Fullscreen */
+.auth-layer {
+    position: fixed; inset: 0; background: var(--white);
+    z-index: 2000; display: flex; justify-content: center; align-items: center; padding: 20px;
+}
 
-/* Auth */
-.auth-layer { position: fixed; inset: 0; background: var(--white); z-index: 2000; display: flex; justify-content: center; align-items: center; padding: 20px; }
-.auth-card { width: 100%; max-width: 400px; text-align: center; }
-.auth-card input, .auth-card select { width: 100%; padding: 14px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
-.btn-primary { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 10px; }
+/* Utilitaires */
+.card { background: var(--white); margin: 10px; padding: 15px; border-radius: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
 .hidden { display: none !important; }
-
-/* Floating Button */
-.fab { position: fixed; bottom: 85px; right: 20px; width: 56px; height: 56px; border-radius: 50%; background: var(--primary); color: white; border: none; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 900; }
+.btn-primary { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
