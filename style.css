@@ -1197,3 +1197,21 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--text-light);
 }
+
+.profession-select {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    background: var(--dark-gray);
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-size: 16px;
+    appearance: none;
+    cursor: pointer;
+}
+
+.profession-select:focus {
+    outline: none;
+    border-color: var(--blue);
+    background: var(--medium-gray);
+}
