@@ -20,7 +20,33 @@ export const appState = {
 
 // Initialisation de l'application
 export async function initApp() {
-    console.log('Initialisation de BoxaLink...');
+    console.log('🚀 Initialisation BoxaLink...');
+    
+    // Masquer l'écran de chargement après 2s max
+    const loadingTimeout = setTimeout(() => {
+        document.getElementById('loading-screen').style.display = 'none';
+        showAuthScreen();
+    }, 2000);
+    
+    try {
+        initEventListeners();
+        const user = await initAuth();
+        
+        clearTimeout(loadingTimeout);
+        
+        if (user) {
+            appState.currentUser = user;
+            showMainApp();
+            loadCurrentSection();
+        } else {
+            showAuthScreen();
+        }
+    } catch (error) {
+        console.error('Erreur initApp:', error);
+        clearTimeout(loadingTimeout);
+        showAuthScreen();
+    }
+}
     
     // Initialiser les écouteurs d'événements
     initEventListeners();
