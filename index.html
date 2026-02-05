@@ -259,11 +259,14 @@
     </div>
 
     <!-- Scripts -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    
+    <!-- Dans index.html, assurez-vous que c'est dans cet ordre -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+<!-- Charger app.js EN PREMIER -->
+<script type="module" src="modules/app.js"></script>
     <script type="module" src="modules/app.js"></script>
     <script type="module" src="modules/auth.js"></script>
     <script type="module" src="modules/chats.js"></script>
