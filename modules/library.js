@@ -1,5 +1,5 @@
 // modules/library.js - Gestion de la bibliothèque de documents
-import { appState } from './app.js';
+import { appState } from '/app.js';
 
 export function initLibrary() {
     console.log('Module Bibliothèque initialisé');
